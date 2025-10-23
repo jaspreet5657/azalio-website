@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security Services — Intelligy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#0f1724; --card:#0b1220aa; --muted:#9aa4b2; --accent:#06b6d4; --glass:rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin:0;background:linear-gradient(180deg,#071029 0%, #071a2b 60%);color:#e6eef6;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:1200px;margin:0 auto;padding:28px}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px}
+    .kicker{display:inline-block;background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--accent);font-weight:600;font-size:13px}
+    .hero h1{margin:14px 0 12px;font-size:34px;line-height:1.05;color:#fff}
+    .hero p{margin:0;color:var(--muted);font-size:15px}
+    .hero-cta{margin-top:18px;display:flex;gap:12px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#0ea5b2);color:#062022;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted);padding:10px 14px;border-radius:10px;text-decoration:none}
+    .hero-visual{border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.7)}
+    .hero-visual img{width:100%;display:block;height:100%;object-fit:cover}
+
+  /* SPLIT ROWS (alternating sections) */
+  .grid{margin-top:28px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;margin:18px 0;padding:18px;border-radius:12px}
+  .split .col{padding:8px}
+  .split .visual img{width:100%;height:320px;object-fit:cover;border-radius:10px;display:block;box-shadow:0 12px 30px rgba(2,6,23,0.55)}
+  .split .text h3{color:#fff;margin:0 0 10px;font-size:22px}
+  .split .text p{color:var(--muted);margin:0 0 10px;font-size:15px}
+  .split .text .small{font-size:13px;color:#9aa4b2}
+
+  /* alternating layout: .alt flips columns */
+  .split.alt{grid-template-columns:1fr 1fr}
+  .split.alt .visual{order:0}
+  .split.alt .text{order:1}
+
+  /* animation - slide from left/right */
+  .split{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.9,.2,1)}
+  .split.in{opacity:1;transform:none}
+  .split:not(.alt).in .text{transform:none}
+  .split:not(.alt) .text{transform:translateX(-28px);transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+  .split:not(.alt).in .visual{transform:none}
+  .split:not(.alt) .visual{transform:translateX(28px);transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+  .split.alt .visual{transform:translateX(-28px);transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+  .split.alt .text{transform:translateX(28px);transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+  .split.alt.in .visual,.split.alt.in .text{transform:none}
+
+  /* Navigation Bar */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    padding: 15px 50px;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #48d1cc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+
+  .nav-link:hover {
+    color: #48d1cc;
+    background: rgba(102, 126, 234, 0.1);
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(26, 26, 46, 0.98);
+    min-width: 250px;
+    border-radius: 10px;
+    padding: 10px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    margin-top: 10px;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-content a:hover {
+    background: rgba(102, 126, 234, 0.2);
+    color: #48d1cc;
+    padding-left: 30px;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 15px 20px;
+    }
+
+    .nav-menu {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+  }
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+  @media (max-width:980px){.hero{grid-template-columns:1fr;}.hero-visual{order:-1;height:220px}}
+  @media (max-width:720px){.split{grid-template-columns:1fr;}.split .visual img{height:220px}.split .visual,.split .text{order:initial}}
+  @media (max-width:520px){.wrap{padding:16px}.hero h1{font-size:24px}}
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="./index.html" class="nav-logo">Azalio</a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Services</a>
+          <div class="dropdown-content">
+            <a href="./AI.html">AI Solutions</a>
+            <a href="./cloudEngineering.html">Cloud Engineering</a>
+            <a href="./devops.html">DevOps</a>
+            <a href="./CyberSecurityServices.html">Cyber Security Services</a>
+            <a href="./securityRisk.html">Security Risk</a>
+            <a href="./secrueNetwork.html">Secure Network</a>
+            <a href="./secruityInPublic.html">Security in Public</a>
+          </div>
+        </li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <div class="wrap" style="margin-top: 70px;">
+    <header class="hero" role="banner">
+      <div>
+        <span class="kicker">Security • Cloud • Edge</span>
+        <h1>Secure your apps, data, hosts and networks — confidently</h1>
+        <p>From IoT and edge-cloud apps to hardened hosts and zero-trust networks, we design and deliver pragmatic security programs that scale with your business.</p>
+        <div class="hero-cta">
+          <a class="btn-primary" href="mailto:contact@azalio.io">Start a conversation</a>
+          <a class="btn-outline" href="#services">Explore services</a>
+        </div>
+        <p style="margin-top:14px;color:#9aa4b2;font-size:13px">We provide compliance mapping, secure CI/CD pipelines, OS hardening, and Zero Trust network designs.</p>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <img src="https://www.azalio.io/wp-content/uploads/2022/01/code-g0a57209bd_1920.jpg" alt="Abstract network security visual">
+      </div>
+    </header>
+
+    <section id="services" aria-label="Security service offerings" style="margin-top:28px">
+      <!-- Application Security: content left, image right -->
+      <div class="split row" data-animate>
+        <div class="col text">
+          <h3>Application Security</h3>
+          <p>Secure design reviews, threat modelling, secure CI/CD, and compliance mapping for IoT and edge-cloud applications — so you can ship with confidence.</p>
+          <p class="small">Includes: code reviews, SAST/DAST, threat model, pipeline hardening</p>
+        </div>
+        <div class="col visual">
+          <img src="https://www.azalio.io/wp-content/uploads/2022/01/iot-g67eb0ab17_1920.jpg" alt="IoT devices and cloud">
+        </div>
+      </div>
+
+      <!-- Data Security: content right, image left -->
+      <div class="split row alt" data-animate>
+        <div class="col visual">
+          <img src="https://www.azalio.io/wp-content/uploads/2022/01/regulation-gbb310e3c8_1280.jpg" alt="Data protection illustration">
+        </div>
+        <div class="col text">
+          <h3>Data Security</h3>
+          <p>Data-centric protection, centralised monitoring, governance and compliance programs across cloud and on-prem environments.</p>
+          <p class="small">Includes: DLP, encryption, data discovery, monitoring and governance</p>
+        </div>
+      </div>
+
+      <!-- Host Security: content left, image right -->
+      <div class="split row" data-animate>
+        <div class="col text">
+          <h3>Host Security</h3>
+          <p>CIS-hardened OS images, automated build pipelines, patch management, and runtime protections to keep your hosts resilient.</p>
+          <p class="small">Includes: CIS benchmarking, image build automation, patching guidance</p>
+        </div>
+        <div class="col visual">
+          <img src="https://www.azalio.io/wp-content/uploads/2022/01/binary-ga80eb628f_1920.jpg" alt="Server host and OS">
+        </div>
+      </div>
+
+      <!-- Network Security: content right, image left -->
+      <div class="split row alt" data-animate>
+        <div class="col visual">
+          <img src="https://www.azalio.io/wp-content/uploads/2022/01/code-g0a57209bd_1920.jpg" alt="Network security illustration">
+        </div>
+        <div class="col text">
+          <h3>Network Security</h3>
+          <p>Protect CDN, Wi‑Fi and edge networks; design Zero Trust architectures using access control, VPN, IPS and cloud network controls.</p>
+          <p class="small">Includes: Zero Trust, VPNs, IDS/IPS, network hardening and segmentation</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // simple intersection observer to add 'in' class when element is visible
+      (function(){
+        const obs = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{
+            if(e.isIntersecting){
+              e.target.classList.add('in');
+              obs.unobserve(e.target);
+            }
+          })
+        },{threshold:0.15});
+        document.querySelectorAll('[data-animate]').forEach(el=>obs.observe(el));
+      })();
+    </script>
+
+    <section style="margin-top:28px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="min-width:220px">
+        <h2 style="margin:0;color:#fff;font-size:18px">Want a tailored security plan?</h2>
+        <p style="margin:6px 0 0;color:var(--muted);font-size:14px">Book a quick call and we'll draft an initial roadmap for your environment.</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a class="btn-primary" href="mailto:contact@azalio.io">Book a call</a>
+        <a class="btn-outline" href="index.html">Back to home</a>
+      </div>
+    </section>
+
+    <footer>
+      Images: azalio.io — content and services provided by our security team.
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="./xmlrpc.php" />
+	<title>DevOps & CI/CD Solutions | Intelligy</title>
+	<meta name='robots' content='max-image-preview:large' />
+
+	<!-- CSS Files -->
+	<link rel='stylesheet' id='hfe-widgets-style-css'
+		href='./wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css?ver=2.3.1' media='all' />
+	<link rel='stylesheet' id='gum-elementor-addon-css'
+		href='./wp-content/plugins/gum-elementor-addon/css/style.css?ver=6.8.3' media='all' />
+	<link rel='stylesheet' id='jkit-elements-main-css'
+		href='./wp-content/plugins/jeg-elementor-kit/assets/css/elements/main.css?ver=2.6.13' media='all' />
+	<link rel='stylesheet' id='elementor-frontend-css'
+		href='./wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.28.4' media='all' />
+	<link rel='stylesheet' id='widget-heading-css'
+		href='./wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=3.28.4' media='all' />
+	<link rel='stylesheet' id='e-animation-fadeInLeft-css'
+		href='./wp-content/plugins/elementor/assets/lib/animations/styles/fadeInLeft.min.css?ver=3.28.4' media='all' />
+	<link rel='stylesheet' id='e-animation-fadeInRight-css'
+		href='./wp-content/plugins/elementor/assets/lib/animations/styles/fadeInRight.min.css?ver=3.28.4' media='all' />
+	<link rel='stylesheet' id='e-animation-fadeIn-css'
+		href='./wp-content/plugins/elementor/assets/lib/animations/styles/fadeIn.min.css?ver=3.28.4' media='all' />
+	<link rel='stylesheet' id='e-animation-fadeInUp-css'
+		href='./wp-content/plugins/elementor/assets/lib/animations/styles/fadeInUp.min.css?ver=3.28.4' media='all' />
+	<link rel='stylesheet' id='widget-image-css'
+		href='./wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=3.28.4' media='all' />
+	<link rel='stylesheet' id='hello-elementor-css'
+		href='./wp-content/themes/hello-elementor/style.min.css?ver=2.8.1' media='all' />
+	<link rel='stylesheet' id='hello-elementor-theme-style-css'
+		href='./wp-content/themes/hello-elementor/theme.min.css?ver=2.8.1' media='all' />
+	<link rel='stylesheet' id='hfe-elementor-icons-css'
+		href='./wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.34.0' media='all' />
+	<link rel='stylesheet' id='ekit-widget-styles-css'
+		href='./wp-content/plugins/elementskit-lite/widgets/init/assets/css/widget-styles.css?ver=3.5.1' media='all' />
+
+	<style>
+		body {
+			font-family: "Roboto", Sans-serif;
+			background-color: #0a0a0a;
+		}
+		.elementor-section {
+			padding: 60px 0;
+		}
+		.page-header {
+			background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+			padding: 100px 0;
+			text-align: center;
+			color: white;
+			border-bottom: 2px solid #333;
+		}
+		.page-header h1 {
+			font-size: 3.5rem;
+			font-weight: 700;
+			margin-bottom: 20px;
+			color: #ffffff;
+		}
+		.page-header p {
+			font-size: 1.3rem;
+			max-width: 800px;
+			margin: 0 auto;
+			line-height: 1.8;
+			color: #cccccc;
+		}
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+		.category-section {
+			background: #1a1a1a;
+			border-radius: 15px;
+			padding: 60px;
+			margin-bottom: 50px;
+			box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+			border: 1px solid #2a2a2a;
+		}
+		.category-header {
+			text-align: center;
+			margin-bottom: 50px;
+		}
+		.category-header h2 {
+			font-size: 2.5rem;
+			color: #ffffff;
+			margin-bottom: 20px;
+			font-weight: 700;
+		}
+		.category-header p {
+			font-size: 1.1rem;
+			color: #b0b0b0;
+			max-width: 800px;
+			margin: 0 auto;
+			line-height: 1.8;
+		}
+		.tools-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 30px;
+			margin-top: 40px;
+		}
+		.tool-card {
+			background: #0f0f0f;
+			border-radius: 12px;
+			padding: 40px 30px;
+			text-align: center;
+			transition: all 0.3s ease;
+			border: 2px solid #2a2a2a;
+		}
+		.tool-card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
+			border-color: #ffffff;
+			background: #1a1a1a;
+		}
+		.tool-logo-container {
+			width: 120px;
+			height: 120px;
+			margin: 0 auto 25px;
+			background: #ffffff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+		}
+		.tool-logo {
+			max-width: 80px;
+			max-height: 80px;
+			object-fit: contain;
+		}
+		.tool-name {
+			font-size: 1.3rem;
+			font-weight: 600;
+			color: #ffffff;
+			margin-bottom: 15px;
+		}
+		.tool-description {
+			font-size: 0.95rem;
+			color: #999999;
+			line-height: 1.6;
+		}
+		/* CI/CD Overview Section */
+		.cicd-overview {
+			background: #1a1a1a;
+			border-radius: 15px;
+			padding: 70px 60px;
+			margin-bottom: 50px;
+			box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+			border: 1px solid #2a2a2a;
+		}
+		.cicd-content {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 50px;
+			align-items: center;
+		}
+		.cicd-text h2 {
+			font-size: 2.8rem;
+			color: #ffffff;
+			margin-bottom: 25px;
+			font-weight: 700;
+			line-height: 1.2;
+		}
+		.cicd-text p {
+			font-size: 1.1rem;
+			color: #b0b0b0;
+			line-height: 1.8;
+			margin-bottom: 20px;
+		}
+		.cicd-features {
+			list-style: none;
+			margin-top: 30px;
+		}
+		.cicd-features li {
+			padding: 15px 0;
+			padding-left: 35px;
+			color: #cccccc;
+			font-size: 1.05rem;
+			position: relative;
+			border-bottom: 1px solid #2a2a2a;
+		}
+		.cicd-features li:before {
+			content: "✓";
+			position: absolute;
+			left: 0;
+			color: #ffffff;
+			font-weight: bold;
+			font-size: 1.3rem;
+		}
+		.cicd-features li:last-child {
+			border-bottom: none;
+		}
+		.cicd-image {
+			text-align: center;
+		}
+		.cicd-image img {
+			width: 100%;
+			max-width: 600px;
+			border-radius: 12px;
+			box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+		}
+		/* Animation classes */
+		.elementor-invisible {
+			opacity: 0 !important;
+			visibility: hidden !important;
+		}
+		.animated-slow {
+			animation-duration: 1.2s;
+			animation-fill-mode: both !important;
+		}
+		/* Ensure fadeIn animations work */
+		@keyframes fadeInLeft {
+			0% {
+				opacity: 0;
+				visibility: hidden;
+				transform: translate3d(-300px, 0, 0);
+			}
+			100% {
+				opacity: 1;
+				visibility: visible;
+				transform: translate3d(0, 0, 0);
+			}
+		}
+		@keyframes fadeInRight {
+			0% {
+				opacity: 0;
+				visibility: hidden;
+				transform: translate3d(300px, 0, 0);
+			}
+			100% {
+				opacity: 1;
+				visibility: visible;
+				transform: translate3d(0, 0, 0);
+			}
+		}
+		/* Only animate when both animated class is added AND invisible is removed */
+		.fadeInLeft.animated:not(.elementor-invisible) {
+			animation-name: fadeInLeft;
+			visibility: visible !important;
+		}
+		.fadeInRight.animated:not(.elementor-invisible) {
+			animation-name: fadeInRight;
+			visibility: visible !important;
+		}
+		/* Navigation Bar */
+		.navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background: rgba(10, 10, 10, 0.95);
+			backdrop-filter: blur(10px);
+			z-index: 10000;
+			padding: 15px 50px;
+			border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+			box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+		}
+
+		.nav-container {
+			max-width: 1400px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.nav-logo {
+			font-size: 1.5rem;
+			font-weight: 700;
+			background: linear-gradient(135deg, #667eea 0%, #48d1cc 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-decoration: none;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 30px;
+			align-items: center;
+		}
+
+		.nav-item {
+			position: relative;
+		}
+
+		.nav-link {
+			color: #fff;
+			text-decoration: none;
+			font-size: 1rem;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			padding: 10px 15px;
+			border-radius: 5px;
+		}
+
+		.nav-link:hover {
+			color: #48d1cc;
+			background: rgba(102, 126, 234, 0.1);
+		}
+
+		.dropdown {
+			position: relative;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background: rgba(26, 26, 46, 0.98);
+			min-width: 250px;
+			border-radius: 10px;
+			padding: 10px 0;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+			border: 1px solid rgba(102, 126, 234, 0.3);
+			margin-top: 10px;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.dropdown-content a {
+			display: block;
+			padding: 12px 20px;
+			color: #fff;
+			text-decoration: none;
+			transition: all 0.3s ease;
+		}
+
+		.dropdown-content a:hover {
+			background: rgba(102, 126, 234, 0.2);
+			color: #48d1cc;
+			padding-left: 30px;
+		}
+
+		.mobile-menu-btn {
+			display: none;
+			background: none;
+			border: none;
+			color: #fff;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+
+		@media (max-width: 768px) {
+			.navbar {
+				padding: 15px 20px;
+			}
+
+			.nav-menu {
+				display: none;
+			}
+
+			.mobile-menu-btn {
+				display: block;
+			}
+
+			.page-header h1 {
+				font-size: 2rem;
+			}
+			.category-section {
+				padding: 30px 20px;
+			}
+			.tools-grid {
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			}
+			.cicd-overview {
+				padding: 40px 30px;
+			}
+			.cicd-content {
+				grid-template-columns: 1fr;
+				gap: 30px;
+			}
+			.cicd-text h2 {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+
+<body class="page-template-default page page-id-58 elementor-default elementor-kit-3 elementor-page elementor-page-58">
+
+	<!-- Navigation Bar -->
+	<nav class="navbar">
+		<div class="nav-container">
+			<a href="./index.html" class="nav-logo">Azalio</a>
+			<ul class="nav-menu">
+				<li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link">Services</a>
+					<div class="dropdown-content">
+						<a href="./AI.html">AI Solutions</a>
+						<a href="./cloudEngineering.html">Cloud Engineering</a>
+						<a href="./devops.html">DevOps</a>
+						<a href="./CyberSecurityServices.html">Cyber Security Services</a>
+						<a href="./securityRisk.html">Security Risk</a>
+						<a href="./secrueNetwork.html">Secure Network</a>
+						<a href="./secruityInPublic.html">Security in Public</a>
+					</div>
+				</li>
+			</ul>
+			<button class="mobile-menu-btn">☰</button>
+		</div>
+	</nav>
+
+	<!-- Page Header -->
+	<header class="page-header" style="margin-top: 70px;">
+		<div class="container">
+			<h1 class="animated fadeIn">DevOps Excellence with Comprehensive CI/CD Solutions</h1>
+			<p class="animated fadeIn">Streamline your development workflow with our integrated DevOps tools and CI/CD pipeline solutions. From source control to deployment, we provide the complete toolkit for modern software delivery.</p>
+		</div>
+	</header>
+
+	<!-- Main Content -->
+	<main class="elementor-section">
+		<div class="container">
+
+			<!-- CI/CD Overview Section -->
+			<section class="cicd-overview">
+				<div class="cicd-content">
+					<div class="cicd-text animated-slow elementor-invisible fadeInLeft" data-settings='{"animation":"fadeInLeft"}'>
+						<h2>Accelerate Delivery with CI/CD Pipelines</h2>
+						<p>Continuous Integration and Continuous Deployment (CI/CD) transforms your software delivery by automating the entire development lifecycle. Build, test, and deploy code changes rapidly and reliably.</p>
+						<p>Our CI/CD solutions enable teams to deliver high-quality software faster, reduce manual errors, and maintain consistent deployment processes across all environments.</p>
+
+						<ul class="cicd-features">
+							<li>Automated Build & Test Execution</li>
+							<li>Parallel Pipeline Processing</li>
+							<li>Environment-Specific Deployments</li>
+							<li>Rollback & Recovery Mechanisms</li>
+							<li>Real-time Monitoring & Alerts</li>
+							<li>Integration with Popular Tools</li>
+						</ul>
+					</div>
+					<div class="cicd-image animated-slow elementor-invisible fadeInRight" data-settings='{"animation":"fadeInRight"}'>
+						<img src="./cloud/cicd.png" alt="">
+					</div>
+				</div>
+			</section>
+
+			<!-- SCM Section -->
+			<section class="category-section animated-slow elementor-invisible fadeInLeft" data-settings='{"animation":"fadeInLeft"}'>
+				<div class="category-header">
+					<h2>Source Code Management (SCM)</h2>
+					<p>Comprehensive version control systems for seamless code collaboration, branching, and merging. Manage your codebase efficiently with industry-leading SCM tools.</p>
+				</div>
+				<div class="tools-grid">
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/GITHUB.png" alt="">
+						</div>
+						<div class="tool-name">GitHub</div>
+						<div class="tool-description">Cloud-based Git repository hosting with collaboration features and CI/CD integration</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/GITLAB.png" alt="">
+						</div>
+						<div class="tool-name">GitLab</div>
+						<div class="tool-description">Complete DevOps platform with built-in CI/CD and project management</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/bitbucket.png" alt="">
+						</div>
+						<div class="tool-name">Bitbucket</div>
+						<div class="tool-description">Git solution for professional teams with Jira and Trello integration</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/Jfrog.png" alt="">
+						</div>
+						<div class="tool-name">JFrog</div>
+						<div class="tool-description">Universal artifact repository manager for DevOps automation</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/mercurial.png" alt="">
+						</div>
+						<div class="tool-name">Mercurial</div>
+						<div class="tool-description">Distributed source control management tool for large codebases</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/tfs-1.png" alt="">
+						</div>
+						<div class="tool-name">TFS (Azure DevOps)</div>
+						<div class="tool-description">Microsoft's comprehensive source control and DevOps solution</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Repository Management Section -->
+			<section class="category-section animated-slow elementor-invisible fadeInRight" data-settings='{"animation":"fadeInRight"}'>
+				<div class="category-header">
+					<h2>Repository Management</h2>
+					<p>Centralized artifact storage and package management solutions for efficient dependency management, versioning, and distribution across your development pipeline.</p>
+				</div>
+				<div class="tools-grid">
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/nexus.png" alt="">
+						</div>
+						<div class="tool-name">Nexus Repository</div>
+						<div class="tool-description">Universal artifact repository manager for all build artifacts and dependencies</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/Jfrog.png" alt="">
+						</div>
+						<div class="tool-name">JFrog Artifactory</div>
+						<div class="tool-description">Enterprise-ready repository manager supporting multiple package formats</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/dockerhub.png" alt="">
+						</div>
+						<div class="tool-name">Docker Hub</div>
+						<div class="tool-description">Cloud-based container image registry and distribution platform</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Configuration & Provisioning Section -->
+			<section class="category-section animated-slow elementor-invisible fadeInLeft" data-settings='{"animation":"fadeInLeft"}'>
+				<div class="category-header">
+					<h2>Configuration & Provisioning</h2>
+					<p>Infrastructure as Code (IaC) and configuration management tools for automated provisioning, configuration, and management of your infrastructure at scale.</p>
+				</div>
+				<div class="tools-grid">
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/ansible.png" alt="">
+						</div>
+						<div class="tool-name">Ansible</div>
+						<div class="tool-description">Agentless automation tool for configuration management and orchestration</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/puppet.png" alt="">
+						</div>
+						<div class="tool-name">Puppet</div>
+						<div class="tool-description">Infrastructure automation and configuration management at enterprise scale</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/chef.png" alt="">
+						</div>
+						<div class="tool-name">JFrog Platform</div>
+						<div class="tool-description">Automated configuration and artifact management across environments</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CI Section -->
+			<section class="category-section animated-slow elementor-invisible fadeInRight" data-settings='{"animation":"fadeInRight"}'>
+				<div class="category-header">
+					<h2>Continuous Integration (CI)</h2>
+					<p>Automated build, test, and integration tools that enable rapid development cycles and early bug detection through continuous code integration and testing.</p>
+				</div>
+				<div class="tools-grid">
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/jenkins.png" alt="">
+						</div>
+						<div class="tool-name">Jenkins</div>
+						<div class="tool-description">Open-source automation server for building CI/CD pipelines with plugins</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/bamboo.png" alt="">
+						</div>
+						<div class="tool-name">Bamboo</div>
+						<div class="tool-description">Atlassian's continuous integration and deployment tool with Jira integration</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/tfs-1.png" alt="">
+						</div>
+						<div class="tool-name">TFS (Team Foundation Server)</div>
+						<div class="tool-description">Microsoft's comprehensive source control and DevOps platform for enterprise teams</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Build Tools Section -->
+			<section class="category-section animated-slow elementor-invisible fadeInLeft" data-settings='{"animation":"fadeInLeft"}'>
+				<div class="category-header">
+					<h2>Build Tools</h2>
+					<p>Powerful build automation and packaging tools that compile source code, manage dependencies, and create deployable artifacts for consistent and reproducible builds.</p>
+				</div>
+				<div class="tools-grid">
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/maven.png" alt="">
+						</div>
+						<div class="tool-name">Apache Maven</div>
+						<div class="tool-description">Project management and build automation tool for Java applications</div>
+					</div>
+					<div class="tool-card animated fadeInUp">
+						<div class="tool-logo-container">
+							<img src="https://www.azalio.io/wp-content/uploads/2022/01/packer.png" alt="">
+						</div>
+						<div class="tool-name">Packer</div>
+						<div class="tool-description">Automated machine image creation for multiple platforms and clouds</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</main>
+
+	<!-- Scripts -->
+	<script src="./wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+	<script src="./wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.28.4"></script>
+
+	<script>
+		// Animation on scroll - only start observing AFTER user scrolls
+		document.addEventListener('DOMContentLoaded', function() {
+			let observerInitialized = false;
+			let observer = null;
+
+			// Function to initialize observer after user scrolls
+			function initializeObserver() {
+				// Only initialize once and only if user has scrolled past threshold
+				if (observerInitialized || window.scrollY < 50) {
+					return;
+				}
+
+				observerInitialized = true;
+				console.log('Initializing observer - user has scrolled');
+
+				// Remove the scroll listener
+				window.removeEventListener('scroll', initializeObserver);
+
+				// Observer configuration
+				const observerOptions = {
+					threshold: 0.25,
+					rootMargin: '0px 0px -80px 0px'
+				};
+
+				// Create observer
+				observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						const element = entry.target;
+
+						// Animate when element enters viewport and hasn't been animated yet
+						if (entry.isIntersecting && !element.classList.contains('animated')) {
+							console.log('Triggering animation for:', element.querySelector('h2')?.textContent || 'CI/CD element');
+
+							// Add animated class and remove invisible to trigger animation
+							element.classList.add('animated');
+							element.classList.remove('elementor-invisible');
+
+							// Stop observing this element
+							observer.unobserve(element);
+						}
+					});
+				}, observerOptions);
+
+				// Start observing all animated elements
+				document.querySelectorAll('.category-section').forEach(section => {
+					observer.observe(section);
+				});
+
+				// Observe CI/CD text and image separately for side animations
+				document.querySelectorAll('.cicd-text, .cicd-image').forEach(element => {
+					observer.observe(element);
+				});
+
+				console.log('Observer started - elements being watched');
+			}
+
+			// Listen for scroll event to initialize observer
+			window.addEventListener('scroll', initializeObserver, { passive: true });
+		});
+	</script>
+
+</body>
+</html>

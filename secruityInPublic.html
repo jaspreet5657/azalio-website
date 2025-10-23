@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Security in Public Cloud & On‑Prem — Intelligy</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root{--bg:#071022;--muted:#9aa4b2;--accent:#06b6d4}
+		*{box-sizing:border-box}
+		body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;background:linear-gradient(180deg,#04101b 0%, #071a29 70%);color:#ebf6ff}
+		.site{max-width:1100px;margin:28px auto;padding:20px}
+
+		/* HERO */
+		.hero{display:flex;gap:20px;align-items:center;justify-content:space-between;padding:32px;border-radius:14px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 12px 40px rgba(2,8,23,0.6)}
+		.hero .left{flex:1}
+		.kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--accent);font-weight:700;font-size:13px}
+		h1{margin:12px 0 10px;font-size:30px}
+		p.lead{color:var(--muted);margin:0;font-size:15px}
+		.hero .cta{margin-top:16px;display:flex;gap:12px}
+		.btn{background:linear-gradient(90deg,var(--accent),#0ea5b2);color:#042126;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+		.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+		.hero .visual{width:380px;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(2,6,23,0.6)}
+		.hero .visual img{width:100%;display:block;height:100%;object-fit:cover}
+
+		/* SECTIONS */
+		.section{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-top:28px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005))}
+		.section .img{border-radius:10px;overflow:hidden;background:rgba(255,255,255,0.01);padding:10px}
+		.section img{width:100%;height:380px;object-fit:contain;display:block}
+		.section h2{margin:0 0 10px;font-size:22px}
+		.section p{margin:0 0 10px;color:var(--muted)}
+		.meta{font-size:13px;color:#9aa4b2}
+
+		/* alternating layout */
+		.section.alt{direction:ltr}
+		.section.alt .img{order:-1}
+
+		/* animations */
+		.section{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.2,1)}
+		.section.in{opacity:1;transform:none}
+
+		/* Navigation Bar */
+		.navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background: rgba(10, 10, 10, 0.95);
+			backdrop-filter: blur(10px);
+			z-index: 10000;
+			padding: 15px 50px;
+			border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+			box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+		}
+
+		.nav-container {
+			max-width: 1400px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.nav-logo {
+			font-size: 1.5rem;
+			font-weight: 700;
+			background: linear-gradient(135deg, #667eea 0%, #48d1cc 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-decoration: none;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 30px;
+			align-items: center;
+		}
+
+		.nav-item {
+			position: relative;
+		}
+
+		.nav-link {
+			color: #fff;
+			text-decoration: none;
+			font-size: 1rem;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			padding: 10px 15px;
+			border-radius: 5px;
+		}
+
+		.nav-link:hover {
+			color: #48d1cc;
+			background: rgba(102, 126, 234, 0.1);
+		}
+
+		.dropdown {
+			position: relative;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background: rgba(26, 26, 46, 0.98);
+			min-width: 250px;
+			border-radius: 10px;
+			padding: 10px 0;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+			border: 1px solid rgba(102, 126, 234, 0.3);
+			margin-top: 10px;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.dropdown-content a {
+			display: block;
+			padding: 12px 20px;
+			color: #fff;
+			text-decoration: none;
+			transition: all 0.3s ease;
+		}
+
+		.dropdown-content a:hover {
+			background: rgba(102, 126, 234, 0.2);
+			color: #48d1cc;
+			padding-left: 30px;
+		}
+
+		.mobile-menu-btn {
+			display: none;
+			background: none;
+			border: none;
+			color: #fff;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+
+		@media (max-width: 768px) {
+			.navbar {
+				padding: 15px 20px;
+			}
+
+			.nav-menu {
+				display: none;
+			}
+
+			.mobile-menu-btn {
+				display: block;
+			}
+		}
+
+		@media (max-width:900px){.hero{flex-direction:column}.hero .visual{width:100%;height:220px}.section{grid-template-columns:1fr;}.section img{height:280px}}
+		@media (max-width:520px){.site{padding:12px}h1{font-size:22px}}
+	</style>
+</head>
+<body>
+	<!-- Navigation Bar -->
+	<nav class="navbar">
+		<div class="nav-container">
+			<a href="./index.html" class="nav-logo">Azalio</a>
+			<ul class="nav-menu">
+				<li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link">Services</a>
+					<div class="dropdown-content">
+						<a href="./AI.html">AI Solutions</a>
+						<a href="./cloudEngineering.html">Cloud Engineering</a>
+						<a href="./devops.html">DevOps</a>
+						<a href="./CyberSecurityServices.html">Cyber Security Services</a>
+						<a href="./securityRisk.html">Security Risk</a>
+						<a href="./secrueNetwork.html">Secure Network</a>
+						<a href="./secruityInPublic.html">Security in Public</a>
+					</div>
+				</li>
+			</ul>
+			<button class="mobile-menu-btn">☰</button>
+		</div>
+	</nav>
+
+	<div class="site" style="margin-top: 70px;">
+		<header class="hero">
+			<div class="left">
+				<span class="kicker">Cloud & On‑Prem</span>
+				<h1>Security for public cloud and on‑prem environments</h1>
+				<p class="lead">Design and operate secure infrastructure and applications across public cloud and on‑premises with consistent policies, visibility and resilience.</p>
+				<div class="cta">
+					<a class="btn" href="mailto:contact@azalio.io">Get a consultation</a>
+					<a class="btn ghost" href="#learn">Learn more</a>
+				</div>
+			</div>
+			<div class="visual">
+				<img src="https://www.azalio.io/wp-content/uploads/2022/01/code-g0a57209bd_1920.jpg" alt="Cloud and on-prem security visual">
+			</div>
+		</header>
+
+		<main id="learn">
+			<section class="section" data-animate>
+				<div class="img"><img src="./cloud/publicCloud.png" alt="Public cloud security"></div>
+				<div class="content">
+					<h2>Public Cloud Security</h2>
+					<p>Secure cloud deployments by implementing strong identity and access controls, least-privilege IAM, network segmentation, and automated security checks in CI/CD pipelines. We help you build cloud-native security that scales.</p>
+					<p class="meta">Includes: cloud posture management, IAM hardening, infra as code scanning, runtime protection</p>
+				</div>
+			</section>
+
+			<section class="section alt" data-animate>
+				<div class="content">
+					<h2>On‑Premises Security</h2>
+					<p>For on‑prem environments we deliver hardened host images, secure network segmentation, centralized logging and monitoring, and incident response playbooks tailored to your stack.</p>
+					<p class="meta">Includes: OS hardening, asset inventory, SIEM integration, patch management</p>
+				</div>
+				<div class="img"><img src="./cloud/On‑Premises.png" alt="On-premises security"></div>
+			</section>
+
+			<section class="section" data-animate>
+				<div class="img"><img src="https://www.azalio.io/wp-content/uploads/2022/01/regulation-gbb310e3c8_1280.jpg" alt="Compliance and data protection"></div>
+				<div class="content">
+					<h2>Compliance & Data Protection</h2>
+					<p>Design a governance model and technical controls (encryption, DLP, access reviews) to meet compliance requirements and reduce data exposure risk across cloud and on-prem.</p>
+					<p class="meta">Includes: policy design, data classification, audits and continuous compliance checks</p>
+				</div>
+			</section>
+		</main>
+
+		<script>
+			(function(){
+				const obs = new IntersectionObserver((entries)=>{
+					entries.forEach(e=>{
+						if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+					})
+				},{threshold:0.15});
+				document.querySelectorAll('[data-animate]').forEach(el=>obs.observe(el));
+			})();
+		</script>
+
+		<footer style="margin-top:28px;color:#9aa4b2;text-align:center;font-size:13px">Images: azalio.io</footer>
+	</div>
+</body>
+</html>

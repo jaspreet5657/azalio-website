@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Security Risk Assessment — VA / Penetration Testing</title>
+  <style>
+    /* Enhanced visual: richer hero, decorative shapes, staggered reveals */
+    :root{--bg1:#071022;--bg2:#06121a;--muted:#9aa6ad;--text:#e9f3f5;--accent:#ff7a59;--accent2:#6ee7b7}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--text);background:radial-gradient(1000px 400px at 10% 10%, rgba(110,231,183,0.03), transparent), linear-gradient(180deg,var(--bg1),var(--bg2));-webkit-font-smoothing:antialiased}
+    .wrap{max-width:1200px;margin:28px auto;padding:28px;position:relative}
+
+    /* decorative blob */
+    .decor-blob{position:absolute;right:-120px;top:-80px;filter:blur(36px);opacity:0.6;width:420px;height:420px;background:radial-gradient(circle at 30% 30%, rgba(110,231,183,0.12), transparent 30%), radial-gradient(circle at 70% 70%, rgba(255,122,89,0.08), transparent 30%);border-radius:50%;pointer-events:none}
+
+    header.hero{display:grid;grid-template-columns:1fr 460px;gap:32px;align-items:center}
+    .hero-left h1{font-size:2.25rem;margin:0 0 12px;line-height:1.05}
+    .hero-left h1 .highlight{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .hero-cta{display:flex;gap:12px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#ffb199);padding:12px 18px;border-radius:12px;color:#081018;font-weight:700;border:none;box-shadow:0 8px 30px rgba(255,122,89,0.12)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 16px;border-radius:12px;color:var(--text)}
+
+    /* Glass card style */
+    .glass{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px);border-radius:14px;padding:18px;box-shadow:0 12px 50px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.02)}
+
+    /* Right visual */
+    .hero-right{display:flex;align-items:center;justify-content:center}
+    .visual{width:460px;height:420px;border-radius:14px;background:linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;padding:8px}
+    .visual img{width:100%;height:100%;object-fit:cover;display:block;transform:translateY(0);animation:float 6s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+    /* Stats bar */
+    .stats{display:flex;gap:12px;margin-top:18px}
+    .stat{padding:10px 14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column}
+    .stat strong{font-size:1.1rem}
+    .stat small{color:var(--muted)}
+
+    /* Features grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02);transition:transform .3s ease,box-shadow .3s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+    .card h3{margin:0 0 8px;color:var(--text)}
+    .card p{margin:0;color:var(--muted)}
+
+    /* Methodology */
+    .method{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+    .step{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
+    .step .num{width:46px;height:46px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#041018}
+    .glass h2{margin-top:0;margin-bottom:18px}
+
+    .findings{margin-top:24px}
+    .finding{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+
+    /* Reveal and left/right slide variants */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    .left-slide{transform:translateX(-36px) translateY(18px)}
+    .right-slide{transform:translateX(36px) translateY(18px)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 10000;
+      padding: 15px 50px;
+      border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #48d1cc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+
+    .nav-link:hover {
+      color: #48d1cc;
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(26, 26, 46, 0.98);
+      min-width: 250px;
+      border-radius: 10px;
+      padding: 10px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      margin-top: 10px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(102, 126, 234, 0.2);
+      color: #48d1cc;
+      padding-left: 30px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+    @media (max-width:980px){
+      header.hero{grid-template-columns:1fr;}
+      .hero-right{order:-1}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .method{grid-template-columns:1fr}
+      .decor-blob{display:none}
+      section .glass > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+      section .glass img{height:240px !important}
+    }
+    @media (max-width:520px){
+      .grid{grid-template-columns:1fr}
+      .visual{width:100%;height:320px;padding:8px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="./index.html" class="nav-logo">Azalio</a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Services</a>
+          <div class="dropdown-content">
+            <a href="./AI.html">AI Solutions</a>
+            <a href="./cloudEngineering.html">Cloud Engineering</a>
+            <a href="./devops.html">DevOps</a>
+            <a href="./CyberSecurityServices.html">Cyber Security Services</a>
+            <a href="./securityRisk.html">Security Risk</a>
+            <a href="./secrueNetwork.html">Secure Network</a>
+            <a href="./secruityInPublic.html">Security in Public</a>
+          </div>
+        </li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <div class="wrap" style="margin-top: 70px;">
+    <header class="hero reveal">
+      <div class="hero-left">
+        <h1>Security Risk Assessment — Vulnerability Assessment & Penetration Testing (VA/PT)</h1>
+        <p>Find vulnerabilities before attackers do. Our VA/PT service combines automated scanning, manual validation and exploitation to deliver prioritized, actionable findings.</p>
+        <div class="hero-cta">
+          <button class="btn-primary">Request Assessment</button>
+          <button class="btn-ghost">Download Sample Report</button>
+        </div>
+
+        <div class="grid reveal" style="margin-top:18px">
+          <div class="card">
+            <h3>External & Internal VA</h3>
+            <p>Assess perimeter, cloud and internal assets to reduce attack surface.</p>
+          </div>
+          <div class="card">
+            <h3>Web & API Pentesting</h3>
+            <p>Manual tests for business logic, auth issues and common web vulnerabilities.</p>
+          </div>
+          <div class="card">
+            <h3>Network & Infra</h3>
+            <p>From firewalls to Kubernetes, identify misconfigurations and exploitable weaknesses.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="visual glass reveal">
+          <!-- Placeholder: replace via admin/upload; keep class 'risk-visual' if you want scripts to target it -->
+          <img class="risk-visual" src="./cloud/cubersecurity.png" alt="Risk assessment visual" />
+        </div>
+      </div>
+    </header>
+
+    <section class="method reveal">
+      <div class="glass">
+        <h2>Our Methodology</h2>
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Recon & Mapping</strong>
+            <p class="muted" style="margin:6px 0 0;color:var(--muted)">Discovery of assets, services, and threat surface.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Automated Scanning</strong>
+            <p class="muted" style="margin:6px 0 0;color:var(--muted)">Broad coverage to surface likely issues for triage.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass">
+        <h2>Exploit & Validate</h2>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Manual Verification</strong>
+            <p class="muted" style="margin:6px 0 0;color:var(--muted)">Humans in the loop to reduce false positives.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <strong>Reporting & Remediation</strong>
+            <p class="muted" style="margin:6px 0 0;color:var(--muted)">Prioritized findings, PoC and remediation guidance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="findings reveal">
+      <h2>Example Findings</h2>
+      <div class="finding">
+        <div style="width:8px;height:8px;background:var(--accent);border-radius:50%"></div>
+        <div>
+          <strong>Critical: RCE via vulnerable package</strong>
+          <p style="margin:6px 0 0;color:var(--muted)">Allow remote code execution in older versions of dependency X — immediate patching recommended.</p>
+        </div>
+      </div>
+      <div class="finding" style="margin-top:10px">
+        <div style="width:8px;height:8px;background:#ffb86b;border-radius:50%"></div>
+        <div>
+          <strong>High: Privilege escalation on internal service</strong>
+          <p style="margin:6px 0 0;color:var(--muted)">Weak ACLs allow privilege escalation between microservices; apply stricter RBAC.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Assessment and Governance in SDLC -->
+    <section class="glass reveal" style="margin-top:28px;">
+      <h2 style="text-align:center;margin-bottom:24px">Security Assessment and Governance in SDLC</h2>
+
+      <!-- First Row: Image Left, Text Right -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;margin-bottom:32px">
+        <div class="reveal left-slide">
+          <img src="https://www.azalio.io/wp-content/uploads/2022/01/tech-gbbeeb20c5_1920.jpg" alt="SDLC technology" style="width:100%;border-radius:12px;object-fit:cover;height:280px;box-shadow:0 8px 24px rgba(0,0,0,0.3)" />
+        </div>
+        <div class="reveal right-slide" style="padding-left:12px">
+          <h3 style="color:var(--accent2);margin-top:0">Architecture Review & Testing</h3>
+          <p style="color:var(--muted);line-height:1.6">We provide Security assessment services for R&amp;D departments. Our services include 'Architecture Review' and implement Security Testing with best of assessment tools.</p>
+          <p style="color:var(--muted);line-height:1.6">We understand critical applications for enterprises need to be designed taking care of RFP demands, CIS benchmarking, CMMI-Dev practices and many more security standards involved with new technologies as CIS for dockers etc.</p>
+        </div>
+      </div>
+
+      <!-- Second Row: Text Left, Image Right -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center">
+        <div class="reveal left-slide" style="padding-right:12px">
+          <h3 style="color:var(--accent2);margin-top:0">VAPT Services & Vulnerability Management</h3>
+          <p style="color:var(--muted);line-height:1.6">Our team helps to implement all the processes and guidelines of different security standard bodies in SDLC using the best breed of tools. Our services include Vulnerability Assessment and Penetration testing on applications.</p>
+          <p style="color:var(--muted);line-height:1.6">Our security experts provide enterprises with a comprehensive application evaluation. Using the Vulnerability Assessment and Penetration Testing (VAPT) approach we enable businesses to better protect their systems and data from malicious attacks. Our expertise helps find vulnerabilities in applications from third-party vendors and internally made software.</p>
+        </div>
+        <div class="reveal right-slide">
+          <img src="https://www.azalio.io/wp-content/uploads/2022/01/security-g4f13b922c_1920.jpg" alt="Security" style="width:100%;border-radius:12px;object-fit:cover;height:280px;box-shadow:0 8px 24px rgba(0,0,0,0.3)" />
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:26px" class="glass reveal">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center">
+        <div class="reveal left-slide">
+          <img src="./cloud/whychooseVAPT.png" alt="Penetration Testing" style="width:100%;border-radius:12px;object-fit:contain;height:350px;box-shadow:0 8px 24px rgba(0,0,0,0.3)" />
+        </div>
+        <div class="reveal right-slide">
+          <h2 style="margin-top:0">Why choose our VA/PT?</h2>
+          <ul style="color:var(--muted);line-height:1.8;font-size:1.05rem">
+            <li style="margin-bottom:12px">Actionable remediation with PoCs and timelines</li>
+            <li style="margin-bottom:12px">Skilled testers with real-world offensive experience</li>
+            <li style="margin-bottom:12px">Compliance-friendly reporting (SOC2, ISO, PCI DSS)</li>
+            <li style="margin-bottom:12px">Comprehensive coverage across web, mobile, and infrastructure</li>
+            <li style="margin-bottom:12px">Continuous security monitoring and vulnerability tracking</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top:28px;text-align:center;color:var(--muted)">© <span id="year"></span> Azalio — Security Risk Assessment</footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function revealOnScroll(){
+      document.querySelectorAll('.reveal').forEach(el=>{
+        const r = el.getBoundingClientRect();
+        if(r.top < (window.innerHeight||document.documentElement.clientHeight)-60) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('scroll',revealOnScroll);
+    window.addEventListener('load',revealOnScroll);
+  </script>
+</body>
+</html>
