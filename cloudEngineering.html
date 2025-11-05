@@ -56,6 +56,14 @@
         .feature{background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
         .feature h4{margin:0 0 8px}
 
+        /* content with image layout */
+        .content-image-section{display:grid;grid-template-columns:400px 1fr;gap:40px;align-items:center;margin-top:30px}
+        .content-image-section.reverse{grid-template-columns:1fr 400px}
+        .content-image-section img{width:100%;height:auto;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.4)}
+        @media (max-width: 968px){
+            .content-image-section, .content-image-section.reverse{grid-template-columns:1fr;gap:24px}
+        }
+
         /* small utilities */
         .muted{color:var(--muted)}
 
@@ -183,9 +191,287 @@
             .carousel{height:220px}
             .features{grid-template-columns:1fr}
         }
+
+        /* ========== ANIMATIONS & EFFECTS FROM INDEX.HTML ========== */
+        /* CSS Variables for gradients and colors */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --tertiary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --accent-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --dark-bg: #0a0a0f;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --glow-color: rgba(102, 126, 234, 0.5);
+        }
+
+        /* ========== ANIMATED GRADIENT BACKGROUND ========== */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(240, 147, 251, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(67, 233, 123, 0.1) 0%, transparent 60%);
+            animation: bgShift 20s ease infinite;
+            pointer-events: none;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        /* ========== PARTICLE CANVAS ========== */
+        .particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ========== GRADIENT TEXT ANIMATION ========== */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            position: relative;
+            display: inline-block;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* ========== FLOATING SHAPES ========== */
+        .floating-shape {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-gradient);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary-gradient);
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 5s;
+        }
+
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--tertiary-gradient);
+            top: 40%;
+            right: 10%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        /* ========== FADE IN ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ========== SCROLL PROGRESS BAR ========== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 56px;
+            height: 56px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .scroll-top::before {
+            content: '↑';
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* ========== CUSTOM CURSOR ========== */
+        .custom-cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.2s ease;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        @media (max-width: 768px) {
+            .custom-cursor,
+            .cursor-dot {
+                display: none;
+            }
+            .floating-shape {
+                display: none;
+            }
+        }
+
+        /* Apply gradient text to existing headings */
+        h1, h2, .elementor-heading-title {
+            color: var(--text-primary) !important;
+        }
+
+        /* Apply gradient to all headings by default */
+        .elementor-element h1,
+        .elementor-element h2 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
     </style>
 </head>
 <body>
+    <!-- Animated Background Elements -->
+    <div class="animated-bg"></div>
+    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+
+    <!-- Floating Shapes -->
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop"></div>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
@@ -239,13 +525,62 @@
             </aside>
         </section>
 
-        <section>
+        <!-- Cloud Infrastructure Overview -->
+        <section style="margin-top:40px">
+            <h2 class="animate">Cloud Infrastructure & Engineering Services</h2>
+            <div class="content-image-section animate">
+                <img src="https://www.azalio.io/wp-content/uploads/2022/01/technology-480x320.png" alt="Cloud Infrastructure">
+                <div>
+                    <p style="line-height:1.7; font-size:1.05rem; margin-bottom:16px">
+                        Azalio Cloud Infrastructure & Engineering services help clients to Deploy, Integrate or Migrate their technology applications onto cloud. Our experts provide infrastructure and networking solutions to connect, optimise, and manage private, public, and hybrid cloud solutions across leading platforms, including <strong>AWS, Azure, GCP, and RedHat RHOSP</strong>.
+                    </p>
+                    <p style="line-height:1.7; font-size:1.05rem; margin:0">
+                        Our engineering practice offers reliable capabilities to architect and build new products and services using Cloud native services.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ansible Automation Platform -->
+        <section style="margin-top:50px">
+            <h2 class="animate">Ansible Automation Platform</h2>
+            <div class="content-image-section reverse animate">
+                <div>
+                    <p style="line-height:1.7; font-size:1.05rem; margin-bottom:16px">
+                        Azalio team expertise in <strong>Red Hat Ansible Automation Platform</strong> allows you to deploy your telecom and banking applications reliably and consistently, all from one common framework. You can automate configuration of the services as well as push application artifacts from a common system.
+                    </p>
+                    <p style="line-height:1.7; font-size:1.05rem; margin-bottom:16px">
+                        Automation Platform does the work of getting your systems to the desired state, no matter their current state.
+                    </p>
+                    <p style="line-height:1.7; font-size:1.05rem; margin:0">
+                        <strong>Ansible Playbooks</strong> make your installations, upgrades and day-to-day management repeatable and reliable.
+                    </p>
+                </div>
+                <img src="https://www.azalio.io/wp-content/uploads/2022/01/banking.png" alt="Ansible Automation">
+            </div>
+        </section>
+
+        <!-- Cloud Analytics -->
+        <section style="margin-top:50px">
+            <h2 class="animate">Cloud Analytics</h2>
+            <div class="content-image-section animate">
+                <img src="https://www.azalio.io/wp-content/uploads/2022/01/Cloud-Analytics.png" alt="Cloud Analytics">
+                <div>
+                    <p style="line-height:1.7; font-size:1.05rem; margin:0">
+                        Our Cloud Analytics services help you monitor and log your setup to seamlessly resolve issues, get real-time insights and alerts, and leverage log-based metrics to create meaningful dashboards. Dashboard visualisations help you make informed business decisions and enhance your customer's trust.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools & Platforms -->
+        <section style="margin-top:50px">
             <h2 class="animate">Tools & Platforms</h2>
-            <p class="muted animate">Core technologies we work with. Replace each logo placeholder with your images.</p>
+            <p class="muted animate">Core technologies we work with to deliver cloud-native solutions.</p>
 
             <div class="tools">
                 <div class="tool animate">
-                    <div class="logo">OS</div>
+                    <div class="logo"><img src="./cloud/OpenShift.png" alt="OpenShift"></div>
                     <div>
                         <h3>OpenShift</h3>
                         <p>Enterprise Kubernetes platform for containerized workloads.</p>
@@ -253,7 +588,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">AN</div>
+                    <div class="logo"><img src="./cloud/ansble.png" alt="Ansible"></div>
                     <div>
                         <h3>Ansible</h3>
                         <p>Automation for configuration, deployment and orchestration.</p>
@@ -261,7 +596,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">SP</div>
+                    <div class="logo"><img src="./cloud/Splunk-1.png" alt="Splunk"></div>
                     <div>
                         <h3>Splunk</h3>
                         <p>Log analytics and SIEM for large-scale environments.</p>
@@ -269,7 +604,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">GF</div>
+                    <div class="logo"><img src="./cloud/Grafana.png" alt="Grafana"></div>
                     <div>
                         <h3>Grafana</h3>
                         <p>Visualization and dashboards for metrics and traces.</p>
@@ -277,7 +612,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">CW</div>
+                    <div class="logo"><img src="./cloud/cloudwatch.png" alt="CloudWatch"></div>
                     <div>
                         <h3>CloudWatch</h3>
                         <p>AWS monitoring and observability for cloud resources.</p>
@@ -285,7 +620,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">PR</div>
+                    <div class="logo"><img src="./cloud/prometheus-1.png" alt="Prometheus"></div>
                     <div>
                         <h3>Prometheus</h3>
                         <p>Open-source metrics & alerting system for reliability.</p>
@@ -293,7 +628,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">K8</div>
+                    <div class="logo"><img src="./cloud/Kubernetes.png" alt="Kubernetes"></div>
                     <div>
                         <h3>Kubernetes</h3>
                         <p>Container orchestration at scale.</p>
@@ -301,7 +636,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">KB</div>
+                    <div class="logo"><img src="./cloud/Kibana-1.png" alt="Kibana"></div>
                     <div>
                         <h3>Kibana</h3>
                         <p>Search and analyze logs and metrics with Elasticsearch.</p>
@@ -309,7 +644,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">LS</div>
+                    <div class="logo"><img src="./cloud/logstash.png" alt="Logstash"></div>
                     <div>
                         <h3>Logstash</h3>
                         <p>Data ingestion pipeline for logs and events.</p>
@@ -317,7 +652,7 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">SL</div>
+                    <div class="logo"><img src="./cloud/sumologic.png" alt="Sumologic"></div>
                     <div>
                         <h3>Sumologic</h3>
                         <p>Cloud-native log-management and analytics platform.</p>
@@ -325,10 +660,10 @@
                 </div>
 
                 <div class="tool animate">
-                    <div class="logo">SF</div>
+                    <div class="logo"><img src="./cloud/Elastic-Search.png" alt="Elasticsearch"></div>
                     <div>
-                        <h3>Service Fabric</h3>
-                        <p>Microservices platform for reliable, scalable applications.</p>
+                        <h3>Elasticsearch</h3>
+                        <p>Distributed search and analytics engine for data.</p>
                     </div>
                 </div>
             </div>
@@ -378,6 +713,213 @@
                 slides[idx].style.opacity = 1;
             }, 3500);
         })();
+
+        // ========== PARTICLE SYSTEM FROM INDEX.HTML ==========
+        const canvas = document.getElementById('particleCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let mouse = { x: null, y: null, radius: 150 };
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                init();
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+
+            class Particle {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = Math.random() * 3 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                    this.color = `rgba(${102 + Math.random() * 50}, ${126 + Math.random() * 50}, 234, ${Math.random() * 0.5 + 0.2})`;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                    if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+
+                    // Mouse interaction
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius) {
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        const angle = Math.atan2(dy, dx);
+                        this.x -= Math.cos(angle) * force * 5;
+                        this.y -= Math.sin(angle) * force * 5;
+                    }
+                }
+
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                particles = [];
+                const numberOfParticles = (canvas.width * canvas.height) / 15000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    particles.push(new Particle(x, y));
+                }
+            }
+
+            function connect() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 120) {
+                            const opacity = 1 - (distance / 120);
+                            ctx.strokeStyle = `rgba(102, 126, 234, ${opacity * 0.2})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+
+                connect();
+                requestAnimationFrame(animate);
+            }
+
+            init();
+            animate();
+        }
+
+        // ========== CUSTOM CURSOR ==========
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        if (cursor && cursorDot) {
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.1;
+                cursorY += (mouseY - cursorY) * 0.1;
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+        }
+
+        // ========== SCROLL ANIMATIONS ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========== SCROLL PROGRESS & SCROLL TO TOP ==========
+        window.addEventListener('scroll', () => {
+            // Scroll progress
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (scrollProgress) {
+                scrollProgress.style.width = scrolled + '%';
+            }
+
+            // Scroll to top button
+            const scrollTop = document.getElementById('scrollTop');
+            if (scrollTop) {
+                if (window.scrollY > 500) {
+                    scrollTop.classList.add('show');
+                } else {
+                    scrollTop.classList.remove('show');
+                }
+            }
+        });
+
+        // ========== SCROLL TO TOP CLICK ==========
+        const scrollTopBtn = document.getElementById('scrollTop');
+        if (scrollTopBtn) {
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // ========== SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#') {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // ========== PARALLAX EFFECT FOR FLOATING SHAPES ==========
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-shape');
+            parallaxElements.forEach((el, index) => {
+                const speed = 0.5 + (index * 0.1);
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // ========== PAGE LOAD ANIMATION ==========
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
     </script>
 </body>
 </html>
