@@ -10,11 +10,11 @@
             --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --tertiary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --accent-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --dark-bg: #0a0a0f;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
+            --dark-bg: #ffffff;
+            --card-bg: rgba(0, 0, 0, 0.03);
+            --glass-bg: rgba(0, 0, 0, 0.02);
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a5a;
             --glow-color: rgba(102, 126, 234, 0.5);
         }
 
@@ -52,9 +52,9 @@
             height: 100%;
             z-index: 0;
             background:
-                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(240, 147, 251, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(67, 233, 123, 0.1) 0%, transparent 60%);
+                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(240, 147, 251, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(67, 233, 123, 0.05) 0%, transparent 60%);
             animation: bgShift 20s ease infinite;
         }
 
@@ -72,15 +72,15 @@
             z-index: 1000;
             padding: 20px 60px;
             backdrop-filter: blur(20px);
-            background: rgba(10, 10, 15, 0.6);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .navbar.scrolled {
             padding: 15px 60px;
-            background: rgba(10, 10, 15, 0.9);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -156,12 +156,12 @@
             top: 120%;
             left: 0;
             min-width: 280px;
-            background: rgba(20, 20, 30, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             border-radius: 16px;
             padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             animation: dropdownSlide 0.3s ease;
         }
 
@@ -281,14 +281,14 @@
 
         .cta-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            border: 2px solid rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
         }
 
         .cta-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(102, 126, 234, 0.5);
             transform: translateY(-3px);
         }
 
@@ -307,8 +307,8 @@
         .floating-shape {
             position: absolute;
             border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.3;
+            filter: blur(80px);
+            opacity: 0.15;
             animation: float 20s ease-in-out infinite;
         }
 
@@ -389,13 +389,14 @@
         .capability-card {
             position: relative;
             padding: 40px;
-            background: var(--glass-bg);
+            background: #ffffff;
             backdrop-filter: blur(20px);
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
             cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .capability-card::before {
@@ -413,8 +414,8 @@
 
         .capability-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
         }
 
         .capability-card:hover::before {
@@ -442,7 +443,7 @@
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 16px;
-            color: white;
+            color: var(--text-primary);
         }
 
         .capability-description {
@@ -464,14 +465,15 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            background: var(--glass-bg);
+            background: #ffffff;
             backdrop-filter: blur(20px);
             border-radius: 32px;
             padding: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .solution-item::after {
@@ -508,8 +510,8 @@
         }
 
         .solution-item:hover {
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.1);
         }
 
         .solution-content {
@@ -584,13 +586,14 @@
 
         /* ========== STATS SECTION ========== */
         .stats-section {
-            background: var(--glass-bg);
+            background: #ffffff;
             backdrop-filter: blur(20px);
             border-radius: 32px;
             padding: 80px 60px;
             margin: 60px auto;
             max-width: 1400px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .stats-grid {
@@ -628,14 +631,15 @@
         }
 
         .testimonial-card {
-            background: var(--glass-bg);
+            background: #ffffff;
             backdrop-filter: blur(20px);
             border-radius: 24px;
             padding: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .testimonial-quote {
@@ -868,13 +872,12 @@
             position: fixed;
             width: 40px;
             height: 40px;
-            border: 2px solid rgba(102, 126, 234, 0.5);
+            border: 2px solid rgba(102, 126, 234, 0.6);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
             transition: all 0.2s ease;
             transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
         }
 
         .cursor-dot {
@@ -893,6 +896,735 @@
             .custom-cursor,
             .cursor-dot {
                 display: none;
+            }
+        }
+
+        /* ========== PIPELINE SECTION (Deep Data) ========== */
+        .pipeline-section {
+            position: relative;
+            padding: 120px 60px;
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        .pipeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .pipeline-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pipeline-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .pipeline-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .pipeline-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .pipeline-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .pipeline-flow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #43e97b);
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .pipeline-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pipeline-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 24px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pipeline-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .pipeline-icon.icon-1 { background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(102, 126, 234, 0.05)); }
+        .pipeline-icon.icon-2 { background: linear-gradient(135deg, rgba(118, 75, 162, 0.15), rgba(118, 75, 162, 0.05)); }
+        .pipeline-icon.icon-3 { background: linear-gradient(135deg, rgba(240, 147, 251, 0.15), rgba(240, 147, 251, 0.05)); }
+        .pipeline-icon.icon-4 { background: linear-gradient(135deg, rgba(67, 233, 123, 0.15), rgba(67, 233, 123, 0.05)); }
+
+        .pipeline-step:hover .pipeline-icon {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .pipeline-step h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .pipeline-step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .pipeline-footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .pipeline-footer p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ========== TECH STACK SECTION (IDP) ========== */
+        .tech-section {
+            padding: 120px 60px;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .tech-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .tech-content h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(240, 147, 251, 0.05) 100%);
+            border-radius: 16px;
+            border-left: 4px solid;
+            transition: all 0.4s ease;
+        }
+
+        .tech-item:nth-child(1) { border-color: #667eea; }
+        .tech-item:nth-child(2) { border-color: #764ba2; }
+        .tech-item:nth-child(3) { border-color: #f093fb; }
+
+        .tech-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        .tech-item-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .tech-item:nth-child(1) .tech-item-icon { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .tech-item:nth-child(2) .tech-item-icon { background: linear-gradient(135deg, #764ba2, #f093fb); }
+        .tech-item:nth-child(3) .tech-item-icon { background: linear-gradient(135deg, #f093fb, #f5576c); }
+
+        .tech-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .tech-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .tech-description p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .tech-visual {
+            position: relative;
+        }
+
+        .tech-visual img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .tech-visual::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* ========== SECURE SECTION (Banking LLMs) ========== */
+        .secure-section {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secure-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="1" fill="white" opacity="0.1"/></svg>');
+        }
+
+        .secure-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .secure-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .secure-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+
+        .secure-header p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .secure-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .secure-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .secure-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        .secure-card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: var(--primary-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .secure-card h4 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .secure-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+        }
+
+        /* ========== INFRA SECTION (Enterprise Infrastructure) ========== */
+        .infra-section {
+            padding: 120px 60px;
+            background: #ffffff;
+        }
+
+        .infra-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .infra-header {
+            margin-bottom: 60px;
+        }
+
+        .infra-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .infra-card {
+            position: relative;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .infra-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .infra-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .infra-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+        }
+
+        .infra-card-image {
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+        }
+
+        .infra-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .infra-card:hover .infra-card-image img {
+            transform: scale(1.1);
+        }
+
+        .infra-card-number {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(240, 147, 251, 0.1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .infra-card h4 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .infra-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .infra-footer {
+            padding: 30px 40px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 16px;
+            border-left: 4px solid #667eea;
+        }
+
+        .infra-footer p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ========== PLATFORM SECTION (AI Platform Layer) ========== */
+        .platform-section {
+            padding: 120px 60px;
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .platform-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .platform-header {
+            margin-bottom: 60px;
+        }
+
+        .platform-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .platform-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 900px;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .platform-card {
+            position: relative;
+            padding: 32px;
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: all 0.5s ease;
+            overflow: hidden;
+        }
+
+        .platform-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .platform-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .platform-card-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            transition: all 0.5s ease;
+        }
+
+        .platform-card:hover .platform-card-icon {
+            background: var(--primary-gradient);
+            transform: rotateY(180deg);
+        }
+
+        .platform-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .platform-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========== WHY SECTION (Transform with Azalio) ========== */
+        .why-section {
+            padding: 120px 60px;
+            background: var(--primary-gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            animation: bgScroll 20s linear infinite;
+        }
+
+        .why-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .why-header h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .why-header h2 a {
+            color: #ffffff;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 6px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 36px;
+            transition: all 0.4s ease;
+        }
+
+        .why-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .why-card h4 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .why-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .why-footer {
+            text-align: center;
+        }
+
+        .why-footer p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .why-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-white {
+            background: #ffffff;
+            color: #667eea;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: #ffffff;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* ========== NEW SECTIONS RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .pipeline-flow {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .pipeline-flow::before {
+                display: none;
+            }
+
+            .tech-container {
+                grid-template-columns: 1fr;
+            }
+
+            .secure-cards,
+            .infra-grid,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pipeline-section,
+            .tech-section,
+            .secure-section,
+            .infra-section,
+            .platform-section,
+            .why-section {
+                padding: 80px 20px;
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -943,18 +1675,18 @@
 
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="gradient-text">Transform Your Business</span><br>
-                with AI-Powered Innovation
+                <span class="gradient-text">Enterprise AI Solutions</span><br>
+                That Transform Your Business
             </h1>
             <p class="hero-subtitle">
-                Leverage cutting-edge artificial intelligence and machine learning solutions to automate, optimize, and revolutionize your operations
+                Azalio delivers cutting-edge AI integration services that streamline operations, enhance security, and drive measurable results across telecommunications, banking, and enterprise sectors.
             </p>
             <div class="cta-group">
                 <a href="#solutions" class="cta-button cta-primary">
-                    Explore Solutions →
+                    Explore Our Solutions →
                 </a>
-                <a href="#contact" class="cta-button cta-secondary">
-                    Get Started
+                <a href="https://www.azalio.io/contact-us/" class="cta-button cta-secondary">
+                    Contact Us
                 </a>
             </div>
         </div>
@@ -1039,14 +1771,14 @@
             <div class="solution-item slide-in-left">
                 <div class="solution-content">
                     <div class="solution-number">01</div>
-                    <h3 class="solution-title">Inventory Management for Telco</h3>
-                    <p class="solution-description">AI-powered inventory optimization and predictive analytics for telecommunications infrastructure management.</p>
+                    <h3 class="solution-title">AI-Powered Inventory Management for Telecommunications</h3>
+                    <p class="solution-description">Transform your network asset management with intelligent automation. Our AI-powered inventory optimization platform delivers real-time visibility across your entire infrastructure, enabling data-driven decisions that minimize downtime and reduce operational costs.</p>
                     <ul class="solution-features">
-                        <li>Real-time asset tracking and monitoring</li>
-                        <li>Predictive maintenance alerts</li>
+                        <li>Real-time visibility - Complete asset tracking across networks</li>
+                        <li>Predictive analytics - Anticipate needs before issues arise</li>
+                        <li>Cost reduction - Optimize resources and minimize waste</li>
                         <li>Automated stock replenishment</li>
-                        <li>Supply chain optimization</li>
-                        <li>Cost reduction analytics</li>
+                        <li>Seamless integration with existing systems</li>
                     </ul>
                 </div>
                 <div class="solution-visual slide-in-right">
@@ -1057,14 +1789,14 @@
             <div class="solution-item slide-in-right">
                 <div class="solution-content">
                     <div class="solution-number">02</div>
-                    <h3 class="solution-title">Private Agentic AI</h3>
-                    <p class="solution-description">Fully private AI platforms ensuring complete data sovereignty and regulatory compliance for sensitive industries.</p>
+                    <h3 class="solution-title">Private Agentic AI: Complete Data Sovereignty</h3>
+                    <p class="solution-description">Deploy autonomous AI agents within your own infrastructure with zero external data exposure. Our private agentic AI platform ensures complete data sovereignty and regulatory compliance for banking, government, and highly regulated industries.</p>
                     <ul class="solution-features">
-                        <li>100% on-premise deployment</li>
-                        <li>Zero external data exposure</li>
-                        <li>Custom model training</li>
-                        <li>Enterprise-grade security</li>
-                        <li>Regulatory compliance built-in</li>
+                        <li>Data Sovereignty - Complete control over sensitive information with on-premise deployment</li>
+                        <li>Regulatory Compliance - Built-in frameworks for banking, healthcare, and government standards</li>
+                        <li>On-Premise Autonomy - AI agents operate securely within your infrastructure</li>
+                        <li>Zero external data exposure guarantee</li>
+                        <li>Free from external dependencies</li>
                     </ul>
                 </div>
                 <div class="solution-visual slide-in-left">
@@ -1075,13 +1807,13 @@
             <div class="solution-item slide-in-left">
                 <div class="solution-content">
                     <div class="solution-number">03</div>
-                    <h3 class="solution-title">AURA for Telco</h3>
-                    <p class="solution-description">Advanced AI-driven analytics and automation platform designed specifically for telecommunications operations.</p>
+                    <h3 class="solution-title">AURA for Telco: Advanced Analytics Platform</h3>
+                    <p class="solution-description">Our AURA platform combines advanced AI-driven analytics with automation capabilities specifically designed for telecommunications providers. Transform your network operations with intelligent insights that drive performance improvements and enhance customer satisfaction.</p>
                     <ul class="solution-features">
-                        <li>Network performance optimization</li>
-                        <li>Predictive failure analysis</li>
-                        <li>Customer experience analytics</li>
-                        <li>Resource allocation optimization</li>
+                        <li>Predictive Maintenance - Anticipate network failures before they occur</li>
+                        <li>Network Optimization - AI-driven insights that balance load and maximize efficiency</li>
+                        <li>Customer Experience - Dynamic service quality adjustments in real-time</li>
+                        <li>Reduced downtime and maintenance costs</li>
                         <li>Real-time monitoring dashboards</li>
                     </ul>
                 </div>
@@ -1090,68 +1822,218 @@
                 </div>
             </div>
 
-            <div class="solution-item slide-in-right">
-                <div class="solution-content">
-                    <div class="solution-number">04</div>
-                    <h3 class="solution-title">Deep Data Intelligence</h3>
-                    <p class="solution-description">Comprehensive data intelligence platform leveraging deep learning for actionable insights and decision-making.</p>
-                    <ul class="solution-features">
-                        <li>Advanced pattern recognition</li>
-                        <li>Anomaly detection systems</li>
-                        <li>Predictive modeling</li>
-                        <li>Natural language processing</li>
-                        <li>Custom neural networks</li>
-                    </ul>
+        </div>
+    </section>
+
+    <!-- Deep Data Intelligence Platform - Unique Pipeline Design -->
+    <section class="pipeline-section" id="deep-data">
+        <div class="pipeline-container">
+            <div class="pipeline-header fade-in">
+                <h2><span class="gradient-text">Deep Data Intelligence Platform</span></h2>
+                <p>Transform vast amounts of data into actionable intelligence with our comprehensive deep learning platform. Leverage advanced neural networks for pattern recognition, predictive modeling, and decision-making that unlocks hidden value in your data ecosystems.</p>
+            </div>
+
+            <div class="pipeline-flow fade-in">
+                <div class="pipeline-step">
+                    <div class="pipeline-icon icon-1">📥</div>
+                    <h4>Data Collection</h4>
+                    <p>Aggregate diverse data from multiple sources for a holistic view.</p>
                 </div>
-                <div class="solution-visual slide-in-left">
-                    <img src="./cloud/deepData.png" alt="Deep Data">
+                <div class="pipeline-step">
+                    <div class="pipeline-icon icon-2">🧠</div>
+                    <h4>Deep Learning</h4>
+                    <p>Utilize neural networks for sophisticated analysis and predictive modeling.</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="pipeline-icon icon-3">🔍</div>
+                    <h4>Pattern Recognition</h4>
+                    <p>Identify hidden insights and complex patterns within your data.</p>
+                </div>
+                <div class="pipeline-step">
+                    <div class="pipeline-icon icon-4">📊</div>
+                    <h4>Actionable Intelligence</h4>
+                    <p>Drive strategic decisions with precise, data-driven insights.</p>
                 </div>
             </div>
 
-            <div class="solution-item slide-in-left">
-                <div class="solution-content">
-                    <div class="solution-number">05</div>
-                    <h3 class="solution-title">Intelligent Document Processing</h3>
-                    <p class="solution-description">Automated document extraction, classification, and analysis using advanced AI and machine learning techniques.</p>
-                    <ul class="solution-features">
-                        <li>Multi-format document support</li>
-                        <li>Intelligent data extraction</li>
-                        <li>Automatic classification</li>
-                        <li>Context-aware processing</li>
-                        <li>Seamless workflow integration</li>
-                    </ul>
+            <div class="pipeline-footer fade-in">
+                <p>Our platform enables organizations to move beyond traditional analytics, providing deep insights that drive competitive advantage and operational excellence across all business functions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intelligent Document Processing - Unique Tech Stack Design -->
+    <section class="tech-section" id="idp">
+        <div class="tech-container">
+            <div class="tech-content fade-in">
+                <h2><span class="gradient-text">Intelligent Document Processing</span></h2>
+
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="tech-item-icon">🔤</div>
+                        <div>
+                            <h4>OCR Technology</h4>
+                            <p>Advanced optical character recognition</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-item-icon">💬</div>
+                        <div>
+                            <h4>Natural Language Processing</h4>
+                            <p>Context-aware text understanding</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-item-icon">👁️</div>
+                        <div>
+                            <h4>Computer Vision</h4>
+                            <p>Intelligent image analysis</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="solution-visual slide-in-right">
-                    <img src="./cloud/DocumentProcessing.png" alt="Document Processing">
+
+                <div class="tech-description">
+                    <p>Automate document extraction, classification, and analysis at scale with high accuracy. Process invoices, contracts, forms, and reports efficiently using our advanced AI and matching techniques.</p>
+                    <p>Our IDP solution combines OCR, NLP, and computer vision to understand document context, extract relevant data, and integrate seamlessly with your existing business workflows, <strong>reducing manual processing time by up to 90%</strong>.</p>
+                </div>
+            </div>
+
+            <div class="tech-visual slide-in-right">
+                <img src="./cloud/DocumentProcessing.png" alt="Intelligent Document Processing">
+            </div>
+        </div>
+    </section>
+
+    <!-- Secured LLMs for Banking - Dark Theme Design -->
+    <section class="secure-section" id="banking">
+        <div class="secure-container">
+            <div class="secure-header fade-in">
+                <h2>Secured LLMs for Banking</h2>
+                <p>Deploy large language models within your secure banking infrastructure. Our private AI platform ensures all data remains within your boundary while delivering powerful AI capabilities for customer automation, fraud detection, and internal knowledge discovery.</p>
+            </div>
+
+            <div class="secure-cards">
+                <div class="secure-card fade-in">
+                    <div class="secure-card-icon">🛡️</div>
+                    <h4>Private AI Platform</h4>
+                    <p>Complete isolation from external networks</p>
+                </div>
+                <div class="secure-card fade-in">
+                    <div class="secure-card-icon">🔒</div>
+                    <h4>Data Within Boundary</h4>
+                    <p>Zero data leakage guarantee</p>
+                </div>
+                <div class="secure-card fade-in">
+                    <div class="secure-card-icon">🔗</div>
+                    <h4>Complex Data Integration</h4>
+                    <p>Seamless system connectivity</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section">
-        <div class="section-header fade-in">
-            <h2 class="section-title"><span class="gradient-text">Client Success Stories</span></h2>
-            <p class="section-subtitle">See how we've helped businesses transform with AI</p>
-        </div>
+    <!-- Enterprise AI Infrastructure - Numbered Cards Design -->
+    <section class="infra-section" id="infrastructure">
+        <div class="infra-container">
+            <div class="infra-header fade-in">
+                <h2><span class="gradient-text">Enterprise AI Infrastructure</span></h2>
+            </div>
 
-        <div class="testimonials-slider fade-in">
-            <div class="testimonial-card">
-                <p class="testimonial-quote">"The AI platform they built for us has completely transformed our operations. We've seen a 60% reduction in processing time and significant cost savings. Their team's expertise in private AI deployment was exactly what we needed."</p>
-                <p class="testimonial-author">John Smith</p>
-                <p class="testimonial-role">CTO, Leading Financial Institution</p>
+            <div class="infra-grid">
+                <div class="infra-card fade-in">
+                    <div class="infra-card-image">
+                        <img src="./cloud/kubernetes.png" alt="Private Kubernetes Cluster">
+                    </div>
+                    <h4>Private Kubernetes Cluster</h4>
+                    <p>Scalable container orchestration with enterprise-grade security and reliability for mission-critical AI workloads.</p>
+                </div>
+                <div class="infra-card fade-in">
+                    <div class="infra-card-image">
+                        <img src="./cloud/a100-gpu.png" alt="A100 GPU Acceleration">
+                    </div>
+                    <h4>A100 GPU Acceleration</h4>
+                    <p>Leverage NVIDIA's A100 data center GPUs for exceptional performance in AI training and inference.</p>
+                </div>
+                <div class="infra-card fade-in">
+                    <div class="infra-card-image">
+                        <img src="./cloud/nvidia-operators.png" alt="NVIDIA Operators">
+                    </div>
+                    <h4>NVIDIA Operators</h4>
+                    <p>Ensure maximum utilization and efficiency with automated GPU resource management and optimization.</p>
+                </div>
+            </div>
+
+            <div class="infra-footer fade-in">
+                <p>Our infrastructure combines cutting-edge hardware with sophisticated orchestration, providing the foundation for enterprise AI applications that demand both performance and security.</p>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section fade-in">
-        <div class="cta-content">
-            <h2 class="cta-title">Ready to Transform Your Business?</h2>
-            <p class="cta-description">Let's discuss how AI can revolutionize your operations and drive growth</p>
-            <a href="#contact" class="cta-button-white">Schedule a Consultation</a>
+    <!-- Comprehensive AI Platform Layer - Icon Cards Design -->
+    <section class="platform-section" id="platform">
+        <div class="platform-container">
+            <div class="platform-header fade-in">
+                <h2><span class="gradient-text">Comprehensive AI Platform Layer</span></h2>
+                <p>Our platform provides a robust foundation for enterprise AI, supporting multiple LLM providers including Claude-3, FLAN-3, Llama, Falcon-3, and Titan-3, with advanced features for tracing, feedback collection, multi-language support, and serializability, ensuring enterprise-grade reliability.</p>
+            </div>
+
+            <div class="platform-grid">
+                <div class="platform-card fade-in">
+                    <div class="platform-card-icon">⚙️</div>
+                    <h4>Optimization & Calibration</h4>
+                    <p>Fine-tune models for peak performance and accuracy across diverse use cases.</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="platform-card-icon">📈</div>
+                    <h4>Evaluation & Agency</h4>
+                    <p>Continuous assessment of AI agent performance and decision-making quality.</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="platform-card-icon">🔀</div>
+                    <h4>Agent Routing & Environment</h4>
+                    <p>Intelligent task distribution and secure execution environments for AI agents.</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="platform-card-icon">📡</div>
+                    <h4>Tracing & Feedback</h4>
+                    <p>Complete observability with real-time monitoring and continuous improvement loops.</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Transform Your Enterprise with Azalio - Gradient CTA Design -->
+    <section class="why-section" id="why-azalio">
+        <div class="why-container">
+            <div class="why-header fade-in">
+                <h2>Transform Your Enterprise with <a href="https://www.azalio.io">Azalio.io</a></h2>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card fade-in">
+                    <h4>Industry Expertise</h4>
+                    <p>Deep experience across telecommunications, banking, government, and enterprise sectors with proven implementation success.</p>
+                </div>
+                <div class="why-card fade-in">
+                    <h4>Security First</h4>
+                    <p>Every solution built with security, compliance, and data sovereignty as foundational principles, not afterthoughts.</p>
+                </div>
+                <div class="why-card fade-in">
+                    <h4>Measurable Results</h4>
+                    <p>Deliver tangible ROI through operational efficiency, cost reduction, and enhanced customer experiences.</p>
+                </div>
+            </div>
+
+            <div class="why-footer fade-in">
+                <p>Partner with Azalio.io to integrate cutting-edge AI solutions that respect your security requirements while delivering transformative business value. Our service integration approach ensures seamless adoption and long-term success.</p>
+                <div class="why-buttons">
+                    <a href="https://www.azalio.io/contact-us/" class="btn-white">Schedule a Consultation</a>
+                    <a href="#" class="btn-outline-white">View Case Studies</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <script>
         // ========== PARTICLE SYSTEM ==========
@@ -1181,7 +2063,7 @@
                 this.size = Math.random() * 3 + 1;
                 this.speedX = Math.random() * 1 - 0.5;
                 this.speedY = Math.random() * 1 - 0.5;
-                this.color = `rgba(${102 + Math.random() * 50}, ${126 + Math.random() * 50}, 234, ${Math.random() * 0.5 + 0.2})`;
+                this.color = `rgba(${102 + Math.random() * 50}, ${126 + Math.random() * 50}, 234, ${Math.random() * 0.3 + 0.1})`;
             }
 
             update() {
@@ -1231,7 +2113,7 @@
 
                     if (distance < 120) {
                         const opacity = 1 - (distance / 120);
-                        ctx.strokeStyle = `rgba(102, 126, 234, ${opacity * 0.2})`;
+                        ctx.strokeStyle = `rgba(102, 126, 234, ${opacity * 0.1})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
